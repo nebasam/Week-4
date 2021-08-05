@@ -7,14 +7,14 @@ import librosa
 
 class Create_meta_data():
     def __init__(self, transcription_path:str, audio_path: str, audio_extension: str = 'wav') -> None:
-        self.meta_data = None
+        self.meta_data = pd.DataFrame()
         self.transcription_path = transcription_path
         self.audio_path = audio_path
         self.audio_extension = audio_extension
         self.filenameAndTranscription = {}
         self.filenameAndPath = {}
         
-    def load_transcription(self) -> None:
+    def load_transcription(self):
         """
         This function loads the transcription file, processes it to obtain
         the audio file name and corresponding transcription. Values are stored in 
@@ -84,7 +84,7 @@ class Create_meta_data():
             print("Error Occured")
             traceback.print_exc()
     
-    def meta_data(self) -> None:
+    def create_meta_data(self):
         """
             This functions creates meta data from the audio and transcription files.
             target :  audio transcription
@@ -136,10 +136,10 @@ class Create_meta_data():
         try:
             self.load_transcription()
             self.load_audio_filepaths()
-            self.meta_data()
-            return self.meta
+            self.create_meta_data()
+            return self.meta_data
         except Exception:
-            print("Error Occured while saving file")
+            print("Error Occured while generating meta data")
             traceback.print_exc()   
     
     def meta_data_to_json(self, path: str = 'metaData.json') -> None:
