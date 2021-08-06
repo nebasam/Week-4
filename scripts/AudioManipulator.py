@@ -52,6 +52,6 @@ class AudioManipulator():
             augmented_data[shift:] = 0
         self.audio=augmented_data
         return self.audio
-    def generate_MFCC(self):
-        mfccs = librosa.feature.mfcc(self.audio, self.sr)
+    def generate_MFCC(self,n_mfcc=26):
+        mfccs = librosa.feature.mfcc(self.audio, self.sr,n_mfcc=n_mfcc)
         return mfccs

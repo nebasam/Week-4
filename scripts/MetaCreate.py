@@ -4,13 +4,14 @@ import traceback
 import os
 
 class MetaCreate():
-    def __init__(self, transcription_path:str=r'../data/train/text', audio_path:str='../data/train',audio_extension='wav') -> None:
+    def __init__(self, transcription_path:str=r'../data/train/text', audio_path:str='../data/train',audio_extension='wav',separater='\t') -> None:
         self.meta=None
         self.transcription_path=transcription_path
         self.audio_path=audio_path
         self.audio_extension=audio_extension
         self.file_to_trancscript={}
         self.file_to_path={}
+        self.separater=separater
     def load_transcription(self):
         name_to_text = {}
         try:
@@ -18,7 +19,7 @@ class MetaCreate():
                 f.readline()
                 for line in f:
                     line=line.strip()
-                    ls=line.split("\t",1)
+                    ls=line.split(self.separater,1)
                     name_to_text[ls[0]]=ls[1]
             self.file_to_trancscript=name_to_text
         except FileNotFoundError:
