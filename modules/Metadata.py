@@ -4,7 +4,7 @@ import traceback
 import os
 
 class MetaCreate():
-    def __init__(self, transcription_path:str=r'/content/data/train/text', audio_path:str='/content/data/train',audio_extension='wav') -> None:
+    def __init__(self, transcription_path:str=r'../data/train/text', audio_path:str='../data/train',audio_extension='wav') -> None:
         self.meta=None
         self.transcription_path=transcription_path
         self.audio_path=audio_path
@@ -78,6 +78,7 @@ class MetaCreate():
         self.load_transcription()
         self.meta_data()
         return self.meta
+   
     def get_meta(self):
         return self.meta
     def meta_to_csv(self,path='meta.csv'):
