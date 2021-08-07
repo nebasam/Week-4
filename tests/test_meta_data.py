@@ -6,8 +6,8 @@ from MetaDataGeneration import Create_meta_data
 
 sys.path.append(os.path.abspath(os.path.join('../data/test')))
 
-trans_path = '../data/test/test.txt'
-audio_path = '/wav5'
+trans_path = 'test.txt'
+audio_path = 'wav5'
 
 meta = Create_meta_data(transcription_path=trans_path, audio_path=audio_path,
                         audio_extension='.wav')
