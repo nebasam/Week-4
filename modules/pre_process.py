@@ -92,7 +92,7 @@ class PrepSound():
     self.samples = samples
     self.sample_rate = sr
     if output:
-      return ((samples, sr))
+      return ((samples, sr, max_len))
 
   # ----------------------------
   # Generate a Spectrogram
@@ -109,3 +109,11 @@ class PrepSound():
     spec = transforms.AmplitudeToDB(top_db=top_db)(spec)
     if output:
       return (spec)
+
+  def pre_process(self, newsr, max_ms):
+    self.open(output=False)
+    self.rechannel(new_channel=2, output=False)
+    len = self.resample(newsr=newsr, output=True)[0].shape[1]
+    processed_len = self.pad_trunc(max_ms=max_ms, output=True)[2]
+    r_specs = self.spectro_gram(n_mels=64, n_fft=1024, hop_len=None, output=True)
+    return ({'specs':r_specs, 'sample_len':len, 'processed_len':processed_len, 'smaple_rate':newsr})
