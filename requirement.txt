@@ -1,9 +1,0 @@
-torch
-torchaudio
-IPython
-matplotlib
-librosa
-numpy 
-pandas
-numpy
-pandas
