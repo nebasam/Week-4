@@ -4,10 +4,10 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join('scripts')))
 from MetaDataGeneration import Create_meta_data
 
-sys.path.append(os.path.abspath(os.path.join('../data/test')))
 
-trans_path = '../data/test/test.txt'
-audio_path = '../data/test/wav5'
+
+trans_path = '/Users/runner/work/Week-4/Week-4/data/test/test.txt'
+audio_path = '/Users/runner/work/Week-4/Week-4/data/test/wav5'
 
 meta = Create_meta_data(transcription_path=trans_path, audio_path=audio_path,
                         audio_extension='.wav')

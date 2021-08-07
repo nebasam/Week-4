@@ -1,9 +1,10 @@
 # Meta Data Generation
-import os
+import sys, os
 import glob
 import traceback
 import pandas as pd
 import librosa
+
 
 class Create_meta_data():
     def __init__(self, transcription_path:str, audio_path: str, audio_extension: str = 'wav') -> None:
