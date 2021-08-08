@@ -60,3 +60,15 @@ def model_1(input_dim, filters, kernel_size, conv_stride,
         layer = cell(units, activation=activation,
                     return_sequences=True, implementation=2, name='final_layer_of_rnn')(layer)
         layer = BatchNormalization(name='bt_rnn_final')(layer)
+
+    time_dense = TimeDistributed(Dense(output_dim))(layer)
+    # TODO: Add softmax activation layer
+    y_pred = Activation('softmax', name='softmax')(time_dense)
+    # Specify the model
+    model = Model(inputs=input_data, outputs=y_pred)
+    # TODO: Specify model.output_length
+    model.output_length = lambda x: cnn_output_length(
+        x, kernel_size, conv_border_mode, conv_stride)
+    print(model.summary())
+    plot_model(model, to_file='models/model_1.png', show_shapes=True)
+    return model
