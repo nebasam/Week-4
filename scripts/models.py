@@ -32,3 +32,13 @@ def model_2(input_dim, filters, kernel_size, conv_stride,
     cell=GRU, activation='tanh'):
     """ Build a deep network for speech 
     """
+    # Main acoustic input
+    input_data = Input(name='the_input', shape=(None, input_dim))
+    # TODO: Specify the layers in your network
+    conv_1d = Conv1D(filters, kernel_size, 
+                     strides=conv_stride, 
+                     padding=conv_border_mode,
+                     activation='relu',
+                     name='layer_1_conv',
+                     dilation_rate=1)(input_data)
+    conv_bn = BatchNormalization(name='conv_batch_norm')(conv_1d)
