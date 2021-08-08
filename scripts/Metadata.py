@@ -81,5 +81,5 @@ class MetaCreate():
    
     def get_meta(self):
         return self.meta
-    def meta_to_csv(self,path='meta.csv'):
-        self.meta.to_csv(path)
+    def meta_to_json(self,path='../data_St/meta.json'):
+        self.meta.to_json(path)
