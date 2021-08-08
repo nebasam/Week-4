@@ -12,8 +12,8 @@ import scipy.io.wavfile as wav
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-from src.utils import calc_feat_dim, spectrogram_from_file, text_to_int_sequence
-from src.utils import conv_output_length
+from utils import calc_feat_dim, spectrogram_from_file, text_to_int_sequence
+from utils import conv_output_length
 
 RNG_SEED = 123
 
