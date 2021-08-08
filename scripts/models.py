@@ -26,3 +26,9 @@ def cnn_output_length(input_length, filter_size, border_mode, stride,
     elif border_mode == 'valid':
         output_length = input_length - dilated_filter_size + 1
     return (output_length + stride - 1) // stride
+
+def model_2(input_dim, filters, kernel_size, conv_stride,
+    conv_border_mode, units, output_dim=29, dropout_rate=0.5, number_of_layers=2, 
+    cell=GRU, activation='tanh'):
+    """ Build a deep network for speech 
+    """
