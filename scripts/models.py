@@ -27,7 +27,7 @@ def cnn_output_length(input_length, filter_size, border_mode, stride,
         output_length = input_length - dilated_filter_size + 1
     return (output_length + stride - 1) // stride
 
-def model_2(input_dim, filters, kernel_size, conv_stride,
+def model_1(input_dim, filters, kernel_size, conv_stride,
     conv_border_mode, units, output_dim=29, dropout_rate=0.5, number_of_layers=2, 
     cell=GRU, activation='tanh'):
     """ Build a deep network for speech 
@@ -42,3 +42,21 @@ def model_2(input_dim, filters, kernel_size, conv_stride,
                      name='layer_1_conv',
                      dilation_rate=1)(input_data)
     conv_bn = BatchNormalization(name='conv_batch_norm')(conv_1d)
+    
+    if number_of_layers == 1:
+        layer = cell(units, activation=activation,
+            return_sequences=True, implementation=2, name='rnn_1', dropout=dropout_rate)(conv_bn)
+        layer = BatchNormalization(name='bt_rnn_1')(layer)
+    else:
+        layer = cell(units, activation=activation,
+                    return_sequences=True, implementation=2, name='rnn_1', dropout=dropout_rate)(conv_bn)
+        layer = BatchNormalization(name='bt_rnn_1')(layer)
+
+        for i in range(number_of_layers - 2):
+            layer = cell(units, activation=activation,
+                        return_sequences=True, implementation=2, name='rnn_{}'.format(i+2), dropout=dropout_rate)(layer)
+            layer = BatchNormalization(name='bt_rnn_{}'.format(i+2))(layer)
+
+        layer = cell(units, activation=activation,
+                    return_sequences=True, implementation=2, name='final_layer_of_rnn')(layer)
+        layer = BatchNormalization(name='bt_rnn_final')(layer)
