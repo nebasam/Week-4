@@ -70,5 +70,5 @@ def model_1(input_dim, filters, kernel_size, conv_stride,
     model.output_length = lambda x: cnn_output_length(
         x, kernel_size, conv_border_mode, conv_stride)
     print(model.summary())
-    plot_model(model, to_file='models/model_1.png', show_shapes=True)
+    plot_model(model, to_file='../models/model_1.png', show_shapes=True)
     return model

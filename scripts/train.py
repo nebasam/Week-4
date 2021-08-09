@@ -2,8 +2,8 @@
 Defines a functions for training a NN.
 """
 
-from data_generator import AudioGenerator
-from data_generator import make_audio_gen
+from scripts.data_generator import AudioGenerator
+from scripts.data_generator import make_audio_gen
 
 import _pickle as pickle
 
