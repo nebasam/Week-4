@@ -1,0 +1,4 @@
+artifact_location: file:///D:/same/Documents/10Acadamy/Week%204/System/Week-4/notebook/mlruns/5
+experiment_id: '5'
+lifecycle_stage: active
+name: Bidirectional RNN GPU
