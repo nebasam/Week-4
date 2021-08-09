@@ -13,6 +13,11 @@ from keras.layers import (Input, Lambda)
 from keras.optimizers import SGD
 from keras.callbacks import ModelCheckpoint   
 import os
+import mlflow.keras
+
+mlflow.set_experiment('Speech recognition model')
+mlflow.keras.autolog()
+        
 
 def ctc_lambda_func(args):
     y_pred, labels, input_length, label_length = args
@@ -52,11 +57,11 @@ def train(audio_gen,
     model.compile(loss={'ctc': lambda y_true, y_pred: y_pred}, optimizer=optimizer)
 
     # make results/ directory, if necessary
-    if not os.path.exists('models'):
-        os.makedirs('models')
+    if not os.path.exists('../models'):
+        os.makedirs('../models')
 
     # add checkpointer
-    checkpointer = ModelCheckpoint(filepath='models/'+model_name+'.h5', verbose=0)
+    checkpointer = ModelCheckpoint(filepath='../models/'+model_name+'.h5', verbose=0)
 
     # train the model
     hist = model.fit_generator(generator=audio_gen.next_train(), steps_per_epoch=steps_per_epoch,
@@ -64,5 +69,5 @@ def train(audio_gen,
         callbacks=[checkpointer], verbose=verbose, use_multiprocessing=True)
 
     # save model loss
-    with open('models/'+model_name+'.pickle', 'wb') as f:
+    with open('../models/'+model_name+'.pickle', 'wb') as f:
         pickle.dump(hist.history, f)

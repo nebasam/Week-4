@@ -5,6 +5,11 @@ Helper functions for plotting
 import pickle
 import matplotlib.pyplot as plt
 
+import mlflow.keras
+
+mlflow.set_experiment('Speech recognition model')
+mlflow.keras.autolog()
+
 def plot_hist(p):
     hist = pickle.load(open( "../models/" + p + ".pickle", "rb"))
     plt.plot(hist['loss'], label="train")
@@ -13,4 +18,3 @@ def plot_hist(p):
     plt.ylabel("loss")
     plt.legend()
     plt.show
-    print ('i am df here')

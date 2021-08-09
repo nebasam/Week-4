@@ -1,0 +1,4 @@
+artifact_location: file:///home/nebiyu_sugamo/neba/Week-4/notebooks/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: Speech recognition model
