@@ -24,3 +24,13 @@ def wer(r, h):
     >>> wer("".split(), "who is there".split())
     3
     """
+     # initialisation
+    import numpy
+    d = numpy.zeros((len(r)+1)*(len(h)+1), dtype=numpy.uint8)
+    d = d.reshape((len(r)+1, len(h)+1))
+    for i in range(len(r)+1):
+        for j in range(len(h)+1):
+            if i == 0:
+                d[0][j] = j
+            elif j == 0:
+                d[i][0] = i
