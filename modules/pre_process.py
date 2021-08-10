@@ -2,6 +2,8 @@ import random
 import torch
 import torchaudio
 from torchaudio import transforms
+from  librosa.effects import trim, split
+import numpy as np
 #from IPython.display import Audio
 
 class PrepSound():
@@ -19,6 +21,50 @@ class PrepSound():
     self.sample_rate = sr
     if output:
       return (samples, sr)
+    
+  # ----------------------------
+  # Normormalize audio samples
+  # ----------------------------
+  def norm_sample(self, output=False):
+    samples = self.samples
+    #find the mean value of features
+    feats_mean = np.mean(samples, axis=0)
+    #find the standard deviation of features
+    feats_std = np.std(samples, axis=0)
+    #normalize features
+    samples = (samples - feats_mean) / (feats_std)
+    self.samples = samples
+    if output:
+      #return normalized features
+      return samples
+
+  # ----------------------------
+  # Remove leading and trailing silence in audio samples
+  # ----------------------------
+  def trim_audio(self, trim_db=None, output=False):
+    '''Trim leading and trailing silence from an audio signal'''
+    samples = self.samples
+    samples = trim(samples, top_db=trim_db)[0]
+    self.samples = samples
+    if output:
+      #return trimmed audio
+      return samples
+
+  # ----------------------------
+  # Remove silent parts of audio files
+  # ----------------------------
+  def split_audio(self, top_db=None, output=False):
+    '''Split audio signal into non-silent intervals'''
+    samples = self.samples
+    non_silent_idx = split(samples, top_db=top_db)
+    # Get non-silent intervals
+    non_silent = [samples[start: end] for start, end in non_silent_idx]
+    # Join the sequence of non-silent intervals
+    samples = np.concatenate(np.array(non_silent), axis=0)
+    self.samples = samples
+    if output:
+      #return non -silent audio
+      return samples
 
   # ----------------------------
   # Convert the given audio to the desired number of channels
@@ -110,8 +156,11 @@ class PrepSound():
     if output:
       return (spec)
 
-  def pre_process(self, newsr, max_ms):
+  def pre_process(self, newsr, max_ms, top_db=50):
     self.open(output=False)
+    self.norm_sample(output=False)
+    self.trim_audio(trim_db=top_db, output=False)
+    self.split_audio(top_db=top_db, output=False)
     self.rechannel(new_channel=2, output=False)
     len = self.resample(newsr=newsr, output=True)[0].shape[1]
     processed_len = self.pad_trunc(max_ms=max_ms, output=True)[2]
