@@ -28,9 +28,9 @@ class PrepSound():
   def norm_sample(self, output=False):
     samples = self.samples
     #find the mean value of features
-    feats_mean = np.mean(samples, axis=0)
+    feats_mean = torch.mean(samples)
     #find the standard deviation of features
-    feats_std = np.std(samples, axis=0)
+    feats_std = torch.std(samples)
     #normalize features
     samples = (samples - feats_mean) / (feats_std)
     self.samples = samples
@@ -158,11 +158,11 @@ class PrepSound():
 
   def pre_process(self, newsr, max_ms, top_db=50):
     self.open(output=False)
-    self.norm_sample(output=False)
-    self.trim_audio(trim_db=top_db, output=False)
-    self.split_audio(top_db=top_db, output=False)
     self.rechannel(new_channel=2, output=False)
+    #self.trim_audio(trim_db=top_db, output=False)
+    #self.split_audio(top_db=top_db, output=False)
     len = self.resample(newsr=newsr, output=True)[0].shape[1]
+    self.norm_sample(output=False)
     processed_len = self.pad_trunc(max_ms=max_ms, output=True)[2]
     r_specs = self.spectro_gram(n_mels=64, n_fft=1024, hop_len=None, output=True)
     return ({'specs':r_specs, 'sample_len':len, 'processed_len':processed_len, 'smaple_rate':newsr})

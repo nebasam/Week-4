@@ -16,6 +16,8 @@ class CleanTrans():
         df = self.df
         trans_col = self.tran_col
         df[trans_col] = df[trans_col].apply(lambda x: fill_val if x==unk_val else x)
+        df.dropna(axis=0, inplace=True)
+        df.reset_index(drop=True, inplace=True)
         self.df = df
         if output:
             return df
@@ -31,6 +33,4 @@ class CleanTrans():
     def run_all(self):
         self.fill_unk()
         df = self.rm_punct_digit(output=True)
-        df.dropna(axis=0, inplace=True)
-        df.reset_index(drop=True, inplace=True)
         return df

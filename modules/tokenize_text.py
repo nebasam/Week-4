@@ -3,11 +3,11 @@ import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
-class TokenizerWrap(Tokenizer):
-    def __init__(self, texts, padding, len_sent, filters, reverse=False):
+class TokenizerText(Tokenizer):
+    def __init__(self, texts, padding,filters=None, reverse=False):
         Tokenizer.__init__(self, filters=filters, char_level=True)
 
-        self.len_sent = len_sent
+        self.max_sen_len = np.max([len(t) for t in texts])
          
         # https://stackoverflow.com/questions/51956000/what-does-keras-tokenizer-method-exactly-do
         # creates the vocabulary index based on word frequency
@@ -27,7 +27,7 @@ class TokenizerWrap(Tokenizer):
         # https://stackoverflow.com/questions/42943291/what-does-keras-io-preprocessing-sequence-pad-sequences-do
         # Ensure that all sequences in a list have the same length
         self.tokens_padded = pad_sequences(self.tokens,
-                                           maxlen=len_sent,
+                                           maxlen=self.max_sen_len,
                                            padding=padding,
                                            truncating=truncating
                                            )
@@ -41,12 +41,12 @@ class TokenizerWrap(Tokenizer):
     def tokens_to_string(self, tokens):
         '''Converts  given tokens into words'''
         # If token is 0 word is not taken since 0 is used for padding
-        words = [self.index_to_word[token] for token in tokens if token != 0]
+        words = [self.index_to_word[token] for token in tokens[0] if token != 0]
         # Join the words to construct sentence
         text = "".join(words)
         return text
 
-    def text_to_tokens(self, text, reverse=False, padding=False):
+    def text_to_tokens(self, text, reverse=False, padding=True):
         '''Converts  given text into tokens'''
         tokens = self.texts_to_sequences([text])
         tokens = np.array(tokens)
@@ -59,7 +59,7 @@ class TokenizerWrap(Tokenizer):
 
         if padding:
             tokens = pad_sequences(tokens,
-                                   maxlen=self.len_sent,
+                                   maxlen=self.max_sen_len,
                                    padding=truncating,
                                    truncating=truncating
                                    )
