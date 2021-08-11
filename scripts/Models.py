@@ -223,3 +223,35 @@ def model_3(input_dim, filters, kernel_size, conv_stride,
     print(model.summary())
     # plot_model(model, to_file='models/model_2.png', show_shapes=True)
     return model
+
+
+
+def deep_rnn_model(input_dim, units, recur_layers, output_dim=29):
+    """ Build a deep recurrent network for speech 
+    """
+    
+    # Main acoustic input
+    input_data = Input(name='the_input', shape=(None, input_dim))
+   
+    # TODO: Add recurrent layers, each with batch normalization
+    if recur_layers>1:
+            #first input layer
+        rnn=GRU(output_dim, return_sequences=True, name='rnn')(input_data)
+        bn_layer = BatchNormalization(name='bt_rnn')(rnn)
+        
+        for i in range(recur_layers - 1):
+            rnn=GRU(output_dim, return_sequences=True, name='rnn_{}'.format(i))(bn_layer)
+            bn_layer = BatchNormalization(name='bt_rnn_{}'.format(i))(rnn)
+    else:
+        rnn=GRU(output_dim, return_sequences=True)(input_data)
+        bn_layer = BatchNormalization(name='bt_rnn')(rnn)
+           
+    # TODO: Add a TimeDistributed(Dense(output_dim)) layer
+    time_dense = TimeDistributed(Dense(output_dim))(bn_layer)
+    # Add softmax activation layer
+    y_pred = Activation('softmax', name='softmax')(time_dense)
+    # Specify the model
+    model = Model(inputs=input_data, outputs=y_pred)
+    model.output_length = lambda x: x
+    print(model.summary())
+    return model
