@@ -1,6 +1,6 @@
 
 from tensorflow.keras.optimizers import SGD
-from keras.callbacks import ModelCheckpoint   
+# from keras.callbacks import ModelCheckpoint   
 from ctc_utils import add_ctc_loss
 import pickle
 import os
@@ -38,5 +38,6 @@ def train(audio_gen,
          verbose=verbose)
 
     # save model loss
-    with open('models/'+model_name+'.pickle', 'wb') as f:
+    with open('models/'+model_name+'_loss.h5', 'wb') as f:
         pickle.dump(hist.history, f)
+        f.close()

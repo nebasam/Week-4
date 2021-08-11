@@ -23,7 +23,6 @@ index_map = {v+1: k for k, v in char_map.items()}
 
 def text_to_int_sequence(text):
     """ Convert text to an integer sequence """
-    print("reliad")
     int_sequence = []
     for c in text:
         if c == ' ':

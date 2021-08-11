@@ -18,3 +18,18 @@ def featurize(audios,sr):
         mfcc=manipulator.generate_MFCC()
         feautures.append(mfcc)
     return feautures
+
+def pitch_audio(audios,pitch,sr):
+    feautures=[]
+    for i in audios:
+        manipulator=AudioManipulator(i,sr=sr)
+        mfcc=manipulator.pitch(pitch)
+        feautures.append(mfcc)
+    return feautures
+def shift(audios,direction,amount,sr):
+    feautures=[]
+    for i in audios:
+        manipulator=AudioManipulator(i,sr=sr)
+        mfcc=manipulator.shift_to(amount,direction)
+        feautures.append(mfcc)
+    return feautures
