@@ -1,0 +1,15 @@
+artifact_uri: file:///home/nebiyu_sugamo/neba/Week-4/notebooks/mlruns/1/ec46bfb66c0a456c86682d3550093459/artifacts
+end_time: 1628619033111
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: ec46bfb66c0a456c86682d3550093459
+run_uuid: ec46bfb66c0a456c86682d3550093459
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1628618091865
+status: 4
+tags: []
+user_id: nebiyu_sugamo

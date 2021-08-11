@@ -59,6 +59,7 @@ def train(audio_gen,
     # make results/ directory, if necessary
     if not os.path.exists('../models'):
         os.makedirs('../models')
+    print('boqa')
 
     # add checkpointer
     checkpointer = ModelCheckpoint(filepath='../models/'+model_name+'.h5', verbose=0)
