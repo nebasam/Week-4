@@ -8,6 +8,11 @@ from werkzeug.utils import secure_filename, send_file
 
 app = Flask(__name__)
 
+@app.route("/assets/<path:path>")
+def static_dir(path):
+    return send_from_directory("static/assets", path)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
