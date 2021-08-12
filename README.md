@@ -51,6 +51,8 @@ This project builds, trains and deploy a deep learning model which transcribe au
 ## Contributors
 1. [Michael Darko Ahwireng](https://github.com/mdahwireng)
 2. [Toyin Hawau Olamide](https://github.com/theehawau)
-
-
-
+3. [Nebiyu Samuel](https://github.com/nebasam)
+4. [Sibitenda Harriet](https://github.com/SibitendaHarriet)
+5. [Same Michael](https://github.com/SameC137)
+6. [Mubarak Sani](https://github.com/SamDewriter)
+7. [Khairat Ayinde](https://github.com/khaiyra)
