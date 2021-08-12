@@ -24,7 +24,8 @@ class TestMeta(unittest.TestCase):
 
     def test_meta_data(self):
         print(self.meta.meta_data())
-        self.assertEqual(self.meta.meta_data(), meta_data_output)'''
+        self.assertEqual(self.meta.meta_data(), meta_data_output)
+	
 
     def test_meta(self):
         self.assertRaises(TypeError, MetaCreate())
