@@ -6,6 +6,10 @@ import sys
 import os
 import shutil
 import numpy as np
+# import pyaudio
+from deepspeech import Model
+import scipy.io.wavfile as wav
+import wave
 from werkzeug.utils import secure_filename, send_file
 
 app = Flask(__name__)
@@ -39,6 +43,17 @@ def upload():
         # print(f)
 
         #Make Prediction
+
+
+
+    
+
+
+
+
+
+
+
         preds = model_predict(file_path, model)
         shutil.rmtree('./uploads/audio')
         os.mkdir('./uploads/audio')
