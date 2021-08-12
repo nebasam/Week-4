@@ -7,7 +7,6 @@
 - [Data](#data)
 - [Data Features](#data_features)
 - [Directory Structure](#directory_structure)
-- [Scripts](#scripts)
 - [Testing](#testing)
 - [Model](#model)
 - [Deployment](#deployment)
@@ -25,11 +24,11 @@ This project builds, trains and deploy a deep learning model which transcribe au
 <li>Dataset for Swahili-  https://github.com/getalp/ALFFA_PUBLIC</li>
 </ul>
 
-### Data Features
+### Data_Features
     Input features (X): audio clips of spoken words
     Target labels (y):  text transcript of what was spoken
 
-## Directory Structure 
+## Directory_Structure 
 
 <ul>
     <li><b>Artifacts</b>-A directory which contains artifacts such meta files and other artifacts generated through the project</li>
