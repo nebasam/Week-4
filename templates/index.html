@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
 </head>
-
+<script type="text/javascript">
+    function open_file() {
+        document.getElementById('input_file').click();
+    }
+</script>
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
         <div class="container"><a class="navbar-brand" href="#page-top">STT engine</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
@@ -36,11 +40,12 @@
             </div>
             <div class="col-lg-8 mx-auto">
                 <p class="text-faded mb-5">Our AI powered Speech to text engine will enable you to quickly get the text format of your audio file</p>
-                <p>Please Input Audio file less than 10 secs</p><a class="btn btn-primary btn-xl" role="button" href="#services">Upload your Audio</a>
+                <p>Please Input Audio file less than 10 secs</p><button class="btn btn-primary btn-xl" role="button" onclick="open_file()">Upload your Audio</button>
+                <input type="file" style="display: none;" id="input_file">
             </div>
         </div>
     </header>
-    <section id="about" class="bg-primary">
+    <!-- <section id="about" class="bg-primary">
         <div class="container">
             <div class="row">
                 <div class="col offset-lg-8 text-center mx-auto">
@@ -69,12 +74,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/creative.js"></script>
+    <script src="{{ url_for('static', filename='assets/main.js') }}" type="text/javascript"></script>
 </body>
 
 </html>
