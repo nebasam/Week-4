@@ -13,12 +13,12 @@
 - [Contributors](#contributors)
 
 ### Introduction
-World food Program wants to collect nutritional information of food bought and sold in Kenya. The project is designed to have selected people install an app on their mobile phones, and whenever they buy food, they use their voices to activate the app to register the list of items they have bought in Swahili. The app is expected to live transcribe the voice of the people to text and organize the information in an easy-to-process way in a database
+<p>World food Program wants to collect nutritional information of food bought and sold in Kenya. The project is designed to have selected people install an app on their mobile phones, and whenever they buy food, they use their voices to activate the app to register the list of items they have bought in Swahili. The app is expected to live transcribe the voice of the people to text and organize the information in an easy-to-process way in a database</p>
 ### Objective
 This project builds, trains and deploy a deep learning model which transcribe audio in Swahili to text in Swahili.
 ### Data
 <ul>
-<li>Dataset for Swahili-  https://github.com/getalp/ALFFA_PUBLIC</li></ul>
+<li>Dataset for Swahili-  https://github.com/getalp/ALFFA_PUBLIC/ASR/SWAHILI</li></ul>
 <br/>
 
 ### Data Features
@@ -28,11 +28,11 @@ This project builds, trains and deploy a deep learning model which transcribe au
 ## Directory Structure 
 
 <ul>
-    <li><b>Artifacts</b>-contains artifacts such meta files and other artifacts generated through the project</li>
-    <li><b>Notebook</b>-contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
-    <li><b>Scripts</b>-contains scripts for Meta generation, preprocessing and feature extraction</li>
+    <li><b>Artifacts</b>-A directory which contains artifacts such meta files and other artifacts generated through the project</li>
+    <li><b>Notebook</b>-A directory which contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
+    <li><b>Scripts</b>-A directory which contains scripts for Meta generation, preprocessing and feature extraction</li>
     <li><b>data.dvc</b>- DVC File for versioning of the data</li>
-    <li><b>requirements.txt</b>- dependencies for code inside this branch</li>
+    <li><b>requirements.txt</b>- A file for dependencies for the project</li>
 </ul>
 
 ### Testing
