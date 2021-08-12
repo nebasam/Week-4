@@ -43,6 +43,7 @@ This project builds, trains and deploy a deep learning model which transcribe au
 ### Deployment
 ## Contributors
 1. [Michael Darko Ahwireng](https://github.com/mdahwireng)
+2. [Toyin Hawau Olamide](https://github.com/theehawau)
 
 
 
