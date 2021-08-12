@@ -14,12 +14,15 @@
 
 ### Introduction
 <p>World food Program wants to collect nutritional information of food bought and sold in Kenya. The project is designed to have selected people install an app on their mobile phones, and whenever they buy food, they use their voices to activate the app to register the list of items they have bought in Swahili. The app is expected to live transcribe the voice of the people to text and organize the information in an easy-to-process way in a database</p>
+
 ### Objective
 This project builds, trains and deploy a deep learning model which transcribe audio in Swahili to text in Swahili.
+
 ### Data
+
 <ul>
-<li>Dataset for Swahili-  https://github.com/getalp/ALFFA_PUBLIC/ASR/SWAHILI</li></ul>
-<br/>
+<li>Dataset for Swahili-  https://github.com/getalp/ALFFA_PUBLIC</li>
+</ul>
 
 ### Data Features
     Input features (X): audio clips of spoken words
