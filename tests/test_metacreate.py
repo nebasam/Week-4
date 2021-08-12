@@ -16,8 +16,8 @@ class TestMeta(unittest.TestCase):
     def setUp(self) -> None:
         self.meta = MetaCreate(transcription_path=transcription_path, audio_path=audio_path, audio_extension=audio_extension, separater=separater)        
 
-    def test_load_transcription(self):
-        self.assertEqual(self.meta.load_transcription(), meta_load_transcription_output)
+    '''def test_load_transcription(self):
+        self.assertEqual(self.meta.load_transcription(), meta_load_transcription_output)'''
 
     def test_load_audio_file_paths(self):
         self.assertEqual(self.meta.load_audio_file_paths()['SWH-05-20101106_16k-emission_swahili_05h30_-_06h00_tu_20101106_part100'], meta_load_audio_file_paths_output)
