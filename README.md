@@ -34,13 +34,17 @@ This project builds, trains and deploy a deep learning model which transcribe au
     <li><b>Artifacts</b>-A directory which contains artifacts such meta files and other artifacts generated through the project</li>
     <li><b>Notebook</b>-A directory which contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
     <li><b>Scripts</b>-A directory which contains scripts for Meta generation, preprocessing and feature extraction </li>
+    <li><b>test_data</b>-A directory which has data for running tests for every commit or merge on the main branch</li>
+    <li><b>tests</b>-A directory which has the codes for testing  every commit or merge on the main branch</li>
     <li><b>data.dvc</b>- DVC File for versioning of the data</li>
     <li><b>requirements.txt</b>- A file for dependencies for the project</li>
 </ul>
 
 ### Testing
+<p> The inbuit <b>unittest</b> library in python was used to for the testing of the functions and classes in the project. A <b>.travis.ymal</b> was added to automate testing of any commit or merge made to the main branch. Data used for testing is found in test_data directory</p>
 ### Modelling
 ### Deployment
+<p>The user interface was built with <b>flask</b>. The model was dockerized and deployed on <b>Heroku</p> [Click to test the app](https://swahili-stt.herokuapp.com/)
 ## Contributors
 1. [Michael Darko Ahwireng](https://github.com/mdahwireng)
 2. [Toyin Hawau Olamide](https://github.com/theehawau)
