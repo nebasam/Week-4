@@ -18,6 +18,8 @@ def index():
     if request.method == 'GET':
         return render_template("index.html")
 
+
+
 @app.route("/about")
 def about():
     return "<h1>About</h1>"

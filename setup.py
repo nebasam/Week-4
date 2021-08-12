@@ -5,8 +5,8 @@ from setuptools import setup, find_packages
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-requirements = ['pandas>=1.1.0', 'numpy>=1.19.0', 'sklearn',
-                'seaborn', 'matplotlib', 'dvc', 'mlflow']
+requirements = ['torch','torchaudio','IPython', 'matplotlib', 'librosa', 
+'numpy', 'pandas','numpy', 'pandas']
 
 test_requirements = ['pytest>=3', ]
 
@@ -23,16 +23,16 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="Machine learning approcah for rossman sales prediction",
+    description="Speech to text for Swahili Language",
     install_requires=requirements,
     long_description=readme,
     include_package_data=True,
-    keywords='scripts,data exploration, random forest, linear regression, LSTM, RNN',
+    keywords='modules,data preprocess, data augmentation , feature extraction',
     name='pharmaceutical-sales-Forecasting',
-    packages=find_packages(include=['scripts', 'scripts.*']),
+    packages=find_packages(include=['modules']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/nebasam/Forecasting-Sales',
+    url='https://github.com/10Academy-Group-4/Week-4/tree/Data_preprocess_neba',
     version='0.1.0',
     zip_safe=False,
 )
