@@ -28,11 +28,11 @@ This project builds, trains and deploy a deep learning model which transcribe au
 ## Directory Structure 
 
 <ul>
-    <li><b>artifacts</b>-contains artifacts such meta files and other artifacts generated through the project</li>
-    <li>###notebook-contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
-    <li>###scripts-contains scripts for Meta generation, preprocessing and feature extraction</li>
-    <li>###data.dvc- DVC File for versioning of the data</li>
-    <li>###requirements.txt- dependencies for code inside this branch</li>
+    <li><b>Artifacts</b>-contains artifacts such meta files and other artifacts generated through the project</li>
+    <li><b>Notebook</b>-contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
+    <li><b>Scripts</b>-contains scripts for Meta generation, preprocessing and feature extraction</li>
+    <li><b>data.dvc</b>- DVC File for versioning of the data</li>
+    <li><b>requirements.txt</b>- dependencies for code inside this branch</li>
 </ul>
 
 ### Testing
