@@ -4,18 +4,18 @@ import numpy as np
 class AudioManipulator():
     def __init__(self,audio,sr):
         if type(audio) not in [np.array]:
-            raise TypeError("Audio is not in the required format")
+            raise TypeError("Audio is not in the required format. Must be a numpy array")
         if type(sr) not in [int]:
-            raise TypeError("Sample rate (sr) is not in the required format")
+            raise TypeError("Sample rate (sr) is not in the required format. Must be an integer")
         self.audio=audio
         self.sr=sr
         self.stereo=bool(len(self.audio.shape)-1)
     
     def cut(self,audio,length):
         if type(audio) not in [np.array]:
-            raise TypeError("Audio is not in the required format")
+            raise TypeError("Audio is not in the required format. Must be a numpy array")
         if type(length) not in [int]:
-            raise TypeError("Length is not in the required format")
+            raise TypeError("Length is not in the required format. Must be an integer")
         trunc=[]
         if self.stereo:
             trunc.append(audio[0][:length])
@@ -27,7 +27,7 @@ class AudioManipulator():
     
     def pad(self,length):
         if type(length) not in [int]:
-            raise TypeError("Length is not in the required format")
+            raise TypeError("Length is not in the required format. Must be an integer")
         if self.stereo:
             axis=1
         else:
@@ -51,9 +51,9 @@ class AudioManipulator():
 
     def shift_to(self, shift_max, shift_direction):
         if type(shift_max) not in [int]:
-            raise TypeError("Shift_max is not in the required format")
+            raise TypeError("Shift_max is not in the required format. Must be an integer")
         if type(shift_direction) not in [str]:
-            raise TypeError("Shift_direction is not in the required format")
+            raise TypeError("Shift_direction is not in the required format. Must be a string")
         shift = np.random.randint(self.sr * shift_max)
         if shift_direction == 'right':
             shift = shift
@@ -74,6 +74,6 @@ class AudioManipulator():
 
     def generate_MFCC(self,n_mfcc=26):
         if type(n_mfcc) not in [int]:
-            raise TypeError("n_mfcc is not in the required format")
+            raise TypeError("n_mfcc is not in the required format. Must be an integer")
         mfccs = librosa.feature.mfcc(self.audio, self.sr,n_mfcc=n_mfcc)
         return mfccs
