@@ -13,9 +13,10 @@ def static_dir(path):
     return send_from_directory("static/assets", path)
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    if request.method == 'GET':
+        return render_template("index.html")
 
 @app.route("/about")
 def about():
