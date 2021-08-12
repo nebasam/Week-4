@@ -22,6 +22,8 @@ index_map = {v+1: k for k, v in char_map.items()}
 
 
 def text_to_int_sequence(text):
+    if type(text) not in [str]:
+        raise TypeError("text is not in the required format. Must be a string")
     """ Convert text to an integer sequence """
     int_sequence = []
     for c in text:
@@ -39,10 +41,14 @@ def text_to_int_sequence(text):
 def int_sequence_to_text(int_sequence):
     """ Convert an integer sequence to text """
     text = []
+    counter = 0
     for c in int_sequence:
+        if type(c) not in [int]:
+            raise TypeError("An element in position {} in int_sequence not in the required format. Must be a integer".format(counter+1))
         if(c==0):
             pass
         else:
             ch = index_map[c]
             text.append(ch)
+        counter += 1
     return text

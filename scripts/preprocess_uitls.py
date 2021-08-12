@@ -7,8 +7,8 @@ def pad_audio_files(paths,size=98400):
     if type(size) not in [int]:
         raise TypeError("size is not in the required format. Must be an integer")
     audios=[]
+    counter = 0
     for i in paths:
-        counter = 0
         if type(i) not in [str]:
             raise TypeError("An element in position {} in path not in the required format. Must be a string".format(counter+1))
         audio_data, sr=librosa.load(i,sr=None,mono=False)
