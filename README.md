@@ -44,7 +44,8 @@ This project builds, trains and deploy a deep learning model which transcribe au
 <p> The inbuit <b>unittest</b> library in python was used to for the testing of the functions and classes in the project. A <b>.travis.ymal</b> was added to automate testing of any commit or merge made to the main branch. Data used for testing is found in test_data directory</p>
 ### Modelling
 ### Deployment
-<p>The user interface was built with <b>flask</b>. The model was dockerized and deployed on <b>Heroku</p> [Click to test the app](https://swahili-stt.herokuapp.com/)
+<p>The user interface was built with <b>flask</b>. The model was dockerized and deployed on <b>Heroku [Click to test the app](https://swahili-stt.herokuapp.com/)</p>
+
 ## Contributors
 1. [Michael Darko Ahwireng](https://github.com/mdahwireng)
 2. [Toyin Hawau Olamide](https://github.com/theehawau)
