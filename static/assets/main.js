@@ -21,6 +21,7 @@ $(document).ready(function () {
       }
     }
     $("#input_file").change(function () {
+        console.log('Got Here')
       $(".image-section").show();
       $("#btn-predict").show();
       $("#result").text("");

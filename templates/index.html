@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <script type="text/javascript">
     function open_file() {
@@ -38,11 +41,22 @@
                     <hr>
                 </div>
             </div>
+            <form id="upload-file" method="post" enctype="multipart/form-data" >
             <div class="col-lg-8 mx-auto">
                 <p class="text-faded mb-5">Our AI powered Speech to text engine will enable you to quickly get the text format of your audio file</p>
-                <p>Please Input Audio file less than 10 secs</p><button class="btn btn-primary btn-xl" role="button" onclick="open_file()">Upload your Audio</button>
-                <input type="file" style="display: none;" id="input_file">
+                <p>Please Input Audio file less than 10 secs</p><a class="btn btn-primary btn-xl" id="mainBtn"  onclick="open_file()">Upload your Audio</a>
+                <input type="file" style="display: none;" id="input_file" name="audio">
             </div>
+        </form>
+        <div class="image-section" style="display:none;">
+            <div class="img-preview">
+                <div id="imagePreview">
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg " id="btn-predict" style="margin: 1rem;">Extract Text!</button>
+            </div>
+        </div>
         </div>
     </header>
     <!-- <section id="about" class="bg-primary">
