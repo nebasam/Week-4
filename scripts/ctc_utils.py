@@ -1,5 +1,3 @@
-
-
 from tensorflow.keras import backend as K
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers  import  Input,Lambda
@@ -7,6 +5,8 @@ from tensorflow.keras.layers  import  Input,Lambda
 
 
 def ctc_lambda_func(args):
+    if len(args) != 4:
+        raise ValueError("The elements in args are not up to the required number. Must be 4 in number")
     y_pred, labels, input_length, label_length = args
     return K.ctc_batch_cost(labels, y_pred, input_length, label_length)
 
@@ -36,6 +36,14 @@ def cnn_output_length(input_length, filter_size, border_mode, stride,
         stride (int): Stride size used in 1D convolution.
         dilation (int)
     """
+    if type(input_length) not in [int]:
+        raise TypeError("input_length is not in the required format. Must be an integer")
+    if type(filter_size) not in [int]:
+        raise TypeError("filter_size is not in the required format. Must be an integer")
+    if type(border_mode) not in [str]:
+        raise TypeError("border_mode is not in the required format. Must be a string")
+    if type(stride) not in [int]:
+        raise TypeError("stride is not in the required format. Must be an integer")
     if input_length is None:
         return None
     assert border_mode in {'same', 'valid'}

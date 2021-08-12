@@ -5,6 +5,14 @@ import os
 
 class MetaCreate():
     def __init__(self, transcription_path:str=r'../data/train/text', audio_path:str='../data/train',audio_extension='wav',separater='\t') -> None:
+        if type(transcription_path) not in [str]:
+            raise TypeError("transcription_path is not in the required format. Must be a string")
+        if type(audio_path) not in [str]:
+            raise TypeError("audio_path is not in the required format. Must be a string")
+        if type(audio_extension) not in [str]:
+            raise TypeError("audio_extension is not in the required format. Must be a string")
+        if type(separater) not in [str]:
+            raise TypeError("separater is not in the required format. Must be a string")
         self.meta=None
         self.transcription_path=transcription_path
         self.audio_path=audio_path
@@ -12,6 +20,7 @@ class MetaCreate():
         self.file_to_trancscript={}
         self.file_to_path={}
         self.separater=separater
+
     def load_transcription(self):
         name_to_text = {}
         try:
@@ -45,6 +54,7 @@ class MetaCreate():
         return dict
     def get_file_to_path(self):
         return self.file_to_path
+
     def meta_data(self): 
         target=[]
         filenames=[]
@@ -74,12 +84,17 @@ class MetaCreate():
         data=pd.DataFrame({'file': filenames,'text': target,'path':paths,'sample_rate':sampleRates,"channels":channels, 'duration':duration_of_recordings})
         self.meta=data
         return data
+
     def generate_meta_data(self):
         self.load_audio_file_paths()
         self.load_transcription()
         self.meta_data()
         return self.meta
+
     def get_meta(self):
         return self.meta
+
     def meta_to_json(self,path='meta.json'):
+        if type(path) not in [str]:
+            raise TypeError("path is not in the required format. Must be a string")
         self.meta.to_json(path)
