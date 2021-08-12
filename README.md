@@ -33,7 +33,7 @@ This project builds, trains and deploy a deep learning model which transcribe au
 <ul>
     <li><b>Artifacts</b>-A directory which contains artifacts such meta files and other artifacts generated through the project</li>
     <li><b>Notebook</b>-A directory which contains notebooks for describing the functionality of the the classes to achieve the meta generation and the preprocessing</li>
-    <li><b>Scripts</b>-A directory which contains scripts for Meta generation, preprocessing and feature extraction</li>
+    <li><b>Scripts</b>-A directory which contains scripts for Meta generation, preprocessing and feature extraction </li>
     <li><b>data.dvc</b>- DVC File for versioning of the data</li>
     <li><b>requirements.txt</b>- A file for dependencies for the project</li>
 </ul>
