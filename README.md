@@ -2,21 +2,48 @@
 ## Live Transcription of Swahili Audio to Swahili Text
 
 ### Navigation
-- [Introduction](#introduction)
-- [Objective](#objective)
-- [Data](#data)
-- [Data Features](#data_features)
-- [Directory Structure](#directory_structure)
-- [Testing](#testing)
-- [Model](#model)
-- [Deployment](#deployment)
-- [Contributors](#contributors)
+- [Speech Recognition](#speech-recognition)
+  - [Live Transcription of Swahili Audio to Swahili Text](#live-transcription-of-swahili-audio-to-swahili-text)
+    - [Navigation](#navigation)
+    - [Introduction](#introduction)
+    - [Objective](#objective)
+    - [How to start](#how-to-start)
+    - [Data](#data)
+    - [Data_Features](#data_features)
+  - [Directory_Structure](#directory_structure)
+    - [Testing](#testing)
+    - [Modelling](#modelling)
+    - [Deployment](#deployment)
+  - [Contributors](#contributors)
 
 ### Introduction
 <p>World food Program wants to collect nutritional information of food bought and sold in Kenya. The project is designed to have selected people install an app on their mobile phones, and whenever they buy food, they use their voices to activate the app to register the list of items they have bought in Swahili. The app is expected to live transcribe the voice of the people to text and organize the information in an easy-to-process way in a database</p>
 
 ### Objective
 This project builds, trains and deploy a deep learning model which transcribe audio in Swahili to text in Swahili.
+
+### How to start
+ * <b>Machine Setup:</b>
+
+First, you need to have <b>python 3</b> installed.
+
+Next clone this github link
+
+git clone https://github.com/10Academy-Group-4/Week-4
+Finally, you can install the requirements. If you are an Anaconda user: (else replace pip with pip3 and python with python3)
+pip install -r requirements.txt
+
+ * <b>Docker:</b>
+
+This is a containerized flask application with docker image put on docker hub.A docker image is available with all pre-requisites installed. Here is how you use it
+
+<b>Pull docker image</b>
+
+  docker pull nebasam/stt-swahili
+
+<b>Run docker image</b>
+
+  docker run --rm -it  -p 33507:33507/tcp nebasam/stt-swahili:latest
 
 ### Data
 
@@ -44,6 +71,9 @@ This project builds, trains and deploy a deep learning model which transcribe au
 <p> The inbuit <b>unittest</b> library in python was used to for the testing of the functions and classes in the project. A <b>.travis.ymal</b> was added to automate testing of any commit or merge made to the main branch. Data used for testing is found in test_data directory</p>
 
 ### Modelling
+To get an idea of how models are setup and investigated, take a look at the notebooks for Models, WordError and Augmentation.
+
+
 
 ### Deployment
 <p>The user interface was built with <b>flask</b>. The model was dockerized and deployed on <b>Heroku on https://swahili-stt.herokuapp.com/</p>
