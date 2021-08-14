@@ -39,11 +39,11 @@ This is a containerized flask application with docker image put on docker hub.A 
 
 <b>Pull docker image</b>
 
-  docker pull nebasam/stt-swahili
+ ``` docker pull nebasam/stt-swahili ```
 
 <b>Run docker image</b>
 
-  docker run --rm -it  -p 33507:33507/tcp nebasam/stt-swahili:latest
+ ``` docker run --rm -it  -p 33507:33507/tcp nebasam/stt-swahili:latest ```
 
 ### Data
 
