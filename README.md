@@ -29,9 +29,13 @@ First, you need to have <b>python 3</b> installed.
 
 Next clone this github link
 
-git clone https://github.com/10Academy-Group-4/Week-4
+```git clone https://github.com/10Academy-Group-4/Week-4```
+
+
 Finally, you can install the requirements. If you are an Anaconda user: (else replace pip with pip3 and python with python3)
-pip install -r requirements.txt
+
+
+```pip install -r requirements.txt```
 
  * <b>Docker:</b>
 
