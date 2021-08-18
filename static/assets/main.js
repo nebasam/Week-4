@@ -4,6 +4,7 @@ $(document).ready(function () {
     $("#downloadFile").hide()
     $(".loader").hide();
     $("#result").hide();
+    
   
     // Upload Preview
     function readURL(input) {
@@ -53,7 +54,7 @@ $(document).ready(function () {
           $("#result").fadeIn(600);
           $("#downloadFile").show()
           console.log("data:", data);
-          $("#result").text("The Predicted number of sales is:  " + data);
+          $("#result").text("The Extracted text is:  " + data);
           $("#mainBtn").html("Upload File");
           console.log("Success!");
         },
