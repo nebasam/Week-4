@@ -1,3 +1,4 @@
+from json import load
 from flask import Flask, render_template, send_from_directory, request
 import os   
 import pandas as pd
@@ -6,16 +7,21 @@ import sys
 import os
 import shutil
 import numpy as np
+import librosa
+# import tensorflow as tf
+from tensorflow.keras.models import load_model
 # import pyaudio
 from deepspeech import Model
 import scipy.io.wavfile as wav
 import wave
 from werkzeug.utils import secure_filename, send_file
+from tensorflow.keras import backend as K
+from scripts.utils import  int_sequence_to_text
 
 app = Flask(__name__)
 
 
-MODEL_PATH = 'model/deep.h5'
+MODEL_PATH = './model/deep_speech2.h5'
 
 @app.route("/assets/<path:path>")
 def static_dir(path):
@@ -26,6 +32,23 @@ def static_dir(path):
 def index():
     if request.method == 'GET':
         return render_template("index.html")
+
+def make_prediction():
+    data,sample_rate=librosa.load('./uploads/audio/a.wav')
+    mfccs = librosa.feature.mfcc(data, sr=16000)
+    # def make_predictions(model,features):
+    predictions=[]
+    model = load_model(MODEL_PATH)
+    for i in mfccs:
+        data_point=i.T
+        prediction = model.predict(np.expand_dims(i.T, axis=1))
+        output_length = [model.output_length(data_point.shape[0])]
+        pred_ints = (K.eval(K.ctc_decode(
+                prediction, output_length, greedy=False)[0][0])+1).flatten().tolist()
+        predicted = ''.join(int_sequence_to_text(pred_ints)).replace("<SPACE>", " ")
+
+        predictions.append(predicted)
+    return predictions
 
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
@@ -43,40 +66,19 @@ def upload():
         # print(f)
 
         #Make Prediction
-
-
-
-    
-
-
-
-
-
-
-
-        preds = model_predict(file_path, model)
+        preds = make_prediction(file_path, model)
         shutil.rmtree('./uploads/audio')
         os.mkdir('./uploads/audio')
 
 
-        return '<h1>Sup World!</h1>'
+        return preds
 
-
-
-        # df = pd.read_csv(file_path, parse_dates=True, index_col="Date")
-        # # print(df.head())
-        # df['Year'] = df.index.year
-        # df['Month'] = df.index.month
-        # df['Day'] = df.index.day
-        # df['WeekOfYear'] = df.index.weekofyear
-        # results = make_prediction(df)
-        # print('Printing result',results[0])
-        # return str(int(results[0]))
 
 @app.route("/about")
 def about():
     return "<h1>About</h1>"
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 33507))
-    app.run(host="0.0.0", debug=True,port=port)
+    # port = int(os.environ.get("PORT", 33507))
+    # app.run(host="0.0.0", debug=True,port=port)
+    print(make_prediction())
